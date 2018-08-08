@@ -9,10 +9,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.koloh.inventoryapp.data.ProductContract;
-import com.example.koloh.inventoryapp.data.ProductDbHelper;
+import com.example.koloh.bookinventoryapp.data.ProductContract;
+import com.example.koloh.bookinventoryapp.data.ProductDbHelper;
 
-import static com.example.koloh.inventoryapp.data.ProductContract.BookEntry.TABLE_NAME;
+import static com.example.koloh.bookinventoryapp.data.ProductContract.BookEntry.TABLE_NAME;
+
 
 
 public class ProductEditorActivity extends AppCompatActivity {

@@ -14,7 +14,7 @@ public class ProductDbHelper extends SQLiteOpenHelper {
     //Database version. If the database schema is changed, the version must be incremented.
     private static final int DATABASE_VERSION = 1;
 
-    //Constructs a new instance of BookDbHelper
+    //Constructs a new instance of ProductDbHelper
     public ProductDbHelper(Context context) {
         super ( context, DATABASE_NAME, null, DATABASE_VERSION );
     }
