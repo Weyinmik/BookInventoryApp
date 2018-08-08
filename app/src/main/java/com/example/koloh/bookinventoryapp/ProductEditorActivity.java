@@ -35,7 +35,7 @@ public class ProductEditorActivity extends AppCompatActivity {
     //EditText field to enter the name of the supplier of the book book product
     private EditText mSupplierNameEditText;
 
-    //EditText field to enter the phonenumber of the supplier of the book product
+    //EditText field to enter the phone number of the supplier of the book product
     private EditText mSupplierPhonenumberEditText;
 
 
