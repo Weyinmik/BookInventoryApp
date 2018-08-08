@@ -93,9 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
 //References:
 
-//
+/*  Each of the Udacity lessons and work through has helped me greatly
+ in understanding this project.
+ https://github.com/udacity/ud845-Pets/tree/d9d1e99c77c1771cccdbb5dd3b2ca332d78dbfa0/app/src/main*/
 
-    /*<div>Icons made by <a href="https://www.flaticon.com/authors/picol" title="Picol">Picol</a> from
-    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="
-    http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-     */
+/*<div>Icons made by <a href="https://www.flaticon.com/authors/picol" title="Picol">Picol</a> from
+  <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="
+  http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+*/
