@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Book Inventory App</string>
+    <string name="editor_activity_title_new_book">Add a Book</string>
+    <string name="hint_book_title">Book Title</string>
+    <string name="hint_book_author">Book Author</string>
+    <string name="hint_book_price">Price (€)</string>
+    <string name="hint_book_quantity">Quantity</string>
+    <string name="hint_book_supplier_name">Supplier Name</string>
+    <string name="hint_book_supplier_phonenumber">Supplier Phone Number</string>
+    <string name="save_button">Save</string>
+
+    <string name="error_toast_message">Error with saving product</string>
+    <string name="save_toast_message">save product with _id: </string>
 </resources>
