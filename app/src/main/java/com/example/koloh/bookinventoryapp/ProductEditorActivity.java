@@ -311,6 +311,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
     }
 
 
+
     //This method is called when the back button is pressed
     @Override
     public void onBackPressed() {
@@ -357,7 +358,6 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
         AlertDialog alertDialog = builder.create ();
         alertDialog.show ();
     }
-
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         //Since the editor shows all book attributes, the projection contains all columns from the books table
@@ -378,7 +378,6 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
                 null,
                 null );
     }
-
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         //Leave early if the cursor is null or there is less than one row
@@ -400,7 +399,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
             //Extract the value from the cursor for the given column index
             String title = cursor.getString ( titleColumnIndex );
             String author = cursor.getString ( authorColumnIndex );
-            String price = cursor.getString ( priceColumnIndex );
+            Float price = cursor.getFloat ( priceColumnIndex );
             int quantity = cursor.getInt ( quantityColumnIndex );
             String supplierName = cursor.getString ( supplierNameColumnIndex );
             String supplierPhoneNumber = cursor.getString ( supplierPhoneNumberColumnIndex );
@@ -408,7 +407,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
             //Update views on the screen with the values from the database
             mTitleEditText.setText ( title );
             mAuthorEditText.setText ( author );
-            mPriceEditText.setText ( price );
+            mPriceEditText.setText ( Float.toString ( price ) );
             mQuantityEditText.setText ( Integer.toString ( quantity ) );
             mSupplierNameEditText.setText ( supplierName );
             mSupplierPhonenumberEditText.setText ( supplierPhoneNumber );

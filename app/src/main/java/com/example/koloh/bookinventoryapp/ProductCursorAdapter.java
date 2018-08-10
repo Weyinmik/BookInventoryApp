@@ -43,16 +43,18 @@ public class ProductCursorAdapter extends CursorAdapter {
         int priceColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_PRICE );
         int quantityColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_QUANTITY );
 
-
         //Read the book attributes from the cursor for the current book
         String bookTitle = cursor.getString ( titleColumnIndex );
-        String bookAuthor = cursor.getString ( priceColumnIndex );
+        String productTitle = "Book Title : " + String.valueOf ( bookTitle );
+        Float bookPrice = cursor.getFloat ( priceColumnIndex );
+        String productPrice = "Price : " + String.valueOf ( bookPrice ) + " EUR";
         String bookQuantity = cursor.getString ( quantityColumnIndex );
+        String quantityProduct = "Copies Available : " + String.valueOf ( bookQuantity );
 
         //Update the TextViews with the attributes for the current book
-        titleTextView.setText ( bookTitle );
-        priceTextView.setText ( bookAuthor );
-        quantityTextView.setText ( bookQuantity );
+        titleTextView.setText ( productTitle );
+        priceTextView.setText ( productPrice );
+        quantityTextView.setText ( quantityProduct );
 
         final int quantity = Integer.valueOf ( bookQuantity );
         final int currentBookId = cursor.getInt ( cursor.getColumnIndex ( ProductContract.BookEntry._ID ) );

@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +17,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:text="Book Title:"
                 android:textColor="#2B3D4D" />
 
             <TextView
@@ -51,8 +45,8 @@
             android:layout_alignParentRight="true"
             android:background="@color/colorPrimary"
             android:padding="16dp"
-            android:text="Sale"
+            android:text="@string/btn_text"
+            android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/colorAccent" />
 
     </RelativeLayout>
-</ScrollView>

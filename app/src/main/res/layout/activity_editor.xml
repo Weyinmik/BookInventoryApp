@@ -27,11 +27,26 @@
             android:inputType="textCapWords" />
 
 
-        <EditText
-            android:id="@+id/edit_book_price"
+        <!-- Price field -->
+        <RelativeLayout
             style="@style/EditorFieldStyle"
-            android:hint="@string/hint_book_price"
-            android:inputType="textCapWords" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/editor_paddingleft">
+
+            <EditText
+                android:id="@+id/edit_book_price"
+                style="@style/EditorFieldStyle"
+                android:ems="10"
+                android:hint="@string/hint_book_price"
+                android:inputType="numberDecimal|numberSigned" />
+
+            <!-- Units for price (EUR) -->
+            <TextView
+                android:id="@+id/label_price_units"
+                style="@style/EditorUnitsStyle"
+                android:text="@string/unit_book_price" />
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -46,6 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/btn_padding"
+                android:background="@color/primary"
+                android:textColor="@color/colorAccent"
                 android:text="-" />
 
             <!-- Quantity field -->
@@ -53,6 +70,9 @@
                 android:id="@+id/edit_book_quantity"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_book_quantity"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textAlignment="center"
                 android:inputType="textCapWords" />
 
             <!-- Increment Button -->
@@ -61,6 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:background="@color/primary"
+                android:textColor="@color/colorAccent"
                 android:padding="@dimen/btn_padding"
                 android:text="+" />
 
@@ -89,10 +111,11 @@
                 android:id="@+id/call_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_margin="4dp"
-                android:drawableTop="@drawable/ic_call"
-                android:text="@string/call_btn_text" />
+                style="@style/EditorFieldStyle"
+                android:background="@color/primary"
+                android:drawableLeft="@drawable/ic_call"
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
 
     </LinearLayout>

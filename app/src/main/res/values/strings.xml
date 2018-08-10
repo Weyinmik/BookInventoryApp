@@ -3,7 +3,7 @@
     <string name="editor_activity_title_new_book">Add a Book</string>
     <string name="hint_book_title">Book Title</string>
     <string name="hint_book_author">Book Author</string>
-    <string name="hint_book_price">Price (€)</string>
+    <string name="hint_book_price">Price</string>
     <string name="hint_book_quantity">Quantity</string>
     <string name="hint_book_supplier_name">Supplier Name</string>
     <string name="hint_book_supplier_phonenumber">Supplier Phone Number</string>
@@ -21,8 +21,11 @@
     <string name="delete_btn">Delete</string>
     <string name="call_btn_text">CALL</string>
 
+    <string name="unit_book_price">EUR</string>
+    <string name="btn_text">SELL</string>
+
     <!-- Title text for the empty view -->
-    <string name="empty_view_title_default_text">Your book list is currently empty</string>
+    <string name="empty_view_title_default_text">Your inventory is currently empty</string>
 
     <!-- Subtitle text for the empty view that prompts the user to add a book-->
     <string name="empty_view_sub_default_text">Use float button below to add books</string>
