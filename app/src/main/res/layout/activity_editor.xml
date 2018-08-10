@@ -29,11 +29,37 @@
         android:inputType="textCapWords" />
 
 
-    <EditText
-        android:id="@+id/edit_book_quantity"
-        style="@style/EditorFieldStyle"
-        android:hint="@string/hint_book_quantity"
-        android:inputType="textCapWords" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Decrement Button -->
+        <Button
+            android:id="@+id/decrement_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/btn_padding"
+            android:text="-" />
+
+        <!-- Quantity field -->
+        <EditText
+            android:id="@+id/edit_book_quantity"
+            style="@style/EditorFieldStyle"
+            android:hint="@string/hint_book_quantity"
+            android:inputType="textCapWords" />
+
+        <!-- Increment Button -->
+        <Button
+            android:id="@+id/increment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/btn_padding"
+            android:text="+" />
+
+    </LinearLayout>
 
 
     <EditText
@@ -42,12 +68,26 @@
         android:hint="@string/hint_book_supplier_name"
         android:inputType="textCapWords" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/edit_book_supplier_phonenumber"
-        style="@style/EditorFieldStyle"
-        android:hint="@string/hint_book_supplier_phonenumber"
-        android:inputType="textCapWords" />
 
+        <EditText
+            android:id="@+id/edit_book_supplier_phonenumber"
+            style="@style/EditorFieldStyle"
+            android:hint="@string/hint_book_supplier_phonenumber"
+            android:inputType="textCapWords" />
+
+        <Button
+            android:id="@+id/call_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="4dp"
+            android:drawableTop="@drawable/ic_call"
+            android:text="@string/call_btn_text" />
+    </LinearLayout>
 
 </LinearLayout>

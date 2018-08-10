@@ -128,7 +128,7 @@ public class ProductEditorActivity extends AppCompatActivity {
 
             /* Respond to a click on the "Delete all entries" menu option
              *  This to be properly implemented on Stage2 of the App*/
-            case R.id.action_delete_all_entries:
+            case R.id.action_delete_all_books:
                 deleteAllEntries ();
 
                 return true;

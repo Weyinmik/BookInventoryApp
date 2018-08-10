@@ -11,4 +11,14 @@
 
     <string name="error_toast_message">Error with saving product</string>
     <string name="save_toast_message">save product with _id: </string>
+
+    <string name="action_delete_all_books">Delete All Books</string>
+    <string name="delete_btn">Delete</string>
+    <string name="call_btn_text">CALL</string>
+
+    <!-- Title text for the empty view -->
+    <string name="empty_view_title_default_text">Your book list is currently empty</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a book-->
+    <string name="empty_view_sub_default_text">Please add books</string>
 </resources>
