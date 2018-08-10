@@ -8,6 +8,9 @@
 
     <dimen name="btn_padding">16dp</dimen>
 
-    <dimen name="text_view_padding">16dp</dimen>
+    <dimen name="empty_box_layout_weight">200dp</dimen>
+    <dimen name="empty_box_layout_height">150dp</dimen>
+
+    <dimen name="text_view_padding">30dp</dimen>
     <dimen name="text_view_padding_list">8dp</dimen>
 </resources>

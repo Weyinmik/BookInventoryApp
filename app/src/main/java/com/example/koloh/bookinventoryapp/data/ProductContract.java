@@ -53,7 +53,7 @@ public final class ProductContract {
         public final static String COLUMN_BOOK_AUTHOR = "author";
 
         /*Price of the book
-        Type: TEXT*/
+        Type: REAL*/
         public final static String COLUMN_BOOK_PRICE = "price";
 
         /*Quantity of books
@@ -64,7 +64,7 @@ public final class ProductContract {
         Type: TEXT*/
         public final static String COLUMN_BOOK_SUPPLIER_NAME = "supplier_name";
 
-        /*Phonenumber of the supplier of the book product
+        /*Phone number of the supplier of the book product
         Type: TEXT*/
         public final static String COLUMN_BOOK_SUPPLIER_PHONENUMBER = "supplier_phonenumber";
 

@@ -1,31 +1,41 @@
 package com.example.koloh.bookinventoryapp;
 
 
+import android.app.LoaderManager;
+import android.content.ContentUris;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.example.koloh.bookinventoryapp.data.ProductContract;
-import com.example.koloh.bookinventoryapp.data.ProductDbHelper;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    //This Database helper that provides access to the database
-    private ProductDbHelper mDbHelper;
+    //Identifier for the book data loader
+    private static final int PRODUCT_LOADER = 0;
+
+    //Adapter for the ListView
+    ProductCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
-        //Setting up the Floating Action Bar to open the ProductEditorActivity
-        FloatingActionButton fab = findViewById ( R.id.fab );
+        //Set up Floating Action Button to open the EditorActivity
+        FloatingActionButton fab = (FloatingActionButton) findViewById ( R.id.fab );
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
@@ -34,59 +44,90 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
 
-        /* To access the database, SQLiteOpenHelper subclass is instantiated
-         and passed to context, which is the current activity.*/
-        mDbHelper = new ProductDbHelper ( this );
+        //Find the ListView which will be populated with the book data
+        ListView bookListView = (ListView) findViewById ( R.id.list );
+
+        //Find and set empty view on the ListView, so that it only shows when the list has no items
+        View emptyView = findViewById ( R.id.empty_view );
+        bookListView.setEmptyView ( emptyView );
+
+        //Set up an Adapter to create a list item for each row of book data in the Cursor.
+        mCursorAdapter = new ProductCursorAdapter ( this, null );
+        bookListView.setAdapter ( mCursorAdapter );
+
+        //Set up the item click listener
+        bookListView.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                //Create new intent to go to EditorActivity
+                Intent intent = new Intent ( MainActivity.this, ProductEditorActivity.class );
+                //Form the content URI that represents the specific book that was clicked on
+                Uri currentBookUri = ContentUris.withAppendedId ( ProductContract.BookEntry.CONTENT_URI, id );
+                //Set the URI of the data field of the intent
+                intent.setData ( currentBookUri );
+                //Launch the EditorActivity
+                startActivity ( intent );
+            }
+        } );
+
+        //Initialize the loader
+        getLoaderManager ().initLoader ( PRODUCT_LOADER, null, this );
+
+    }
+
+    //Method to delete all books in the database
+    private void deleteAllBooks() {
+        int rowsDeleted = getContentResolver ().delete ( ProductContract.BookEntry.CONTENT_URI, null, null );
     }
 
     @Override
-    protected void onStart() {
-        super.onStart ();
-        displayDatabaseInfo ();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu options and add menu items to the app bar
+        getMenuInflater ().inflate ( R.menu.menu_main, menu );
+        return true;
     }
 
-    //Temporary helper method to check the amount of entries in the database
-    private void displayDatabaseInfo() {
-        //Create and/or open a database to read from it
-        SQLiteDatabase db = mDbHelper.getReadableDatabase ();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //User clicked on a menu option (switch statement used for if any other options get added later)
+        switch (item.getItemId ()) {
+            case R.id.action_delete_all_books:
+                deleteAllBooks ();
+                return true;
+        }
+        return super.onOptionsItemSelected ( item );
+    }
 
-        //Projecting the specific columns that must be read from the database
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        //Define a projection that specifies the columns from the table that should be shown
         String[] projection = {
                 ProductContract.BookEntry._ID,
                 ProductContract.BookEntry.COLUMN_BOOK_TITLE,
-                ProductContract.BookEntry.COLUMN_BOOK_AUTHOR,
                 ProductContract.BookEntry.COLUMN_BOOK_PRICE,
-                ProductContract.BookEntry.COLUMN_BOOK_QUANTITY,
-                ProductContract.BookEntry.COLUMN_BOOK_SUPPLIER_NAME,
-                ProductContract.BookEntry.COLUMN_BOOK_SUPPLIER_PHONENUMBER};
-
-        //Perform a query on the books table
-        Cursor cursor = db.query (
-                ProductContract.BookEntry.TABLE_NAME, projection, null, null, null, null, null );
-
-        TextView displayView = findViewById ( R.id.text_view_product );
+                ProductContract.BookEntry.COLUMN_BOOK_QUANTITY};
 
 
-        try {
-            displayView.setText ( "The Book Table contains " + cursor.getCount () + " book(s).\n\n" );
-            displayView.append ( ProductContract.BookEntry._ID + " - " + ProductContract.BookEntry.COLUMN_BOOK_TITLE + "\n" );
-
-            //Sort out the index of the _ID column and the title column.
-            int idColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry._ID );
-            int titleColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_TITLE );
-
-            //Iterate through the returned rows in the cursor.
-            while (cursor.moveToNext ()) {
-                int currentID = cursor.getInt ( idColumnIndex );
-                String currentTitle = cursor.getString ( titleColumnIndex );
-                //Display the values from the _ID and title column of the current row in the TextView
-                displayView.append ( ("\n" + currentID + " - " + currentTitle) );
-            }
-        } finally {
-            cursor.close ();
-        }
+        //This Loader will execute the ContentProvider's query method on the background thread
+        return new CursorLoader ( this,
+                ProductContract.BookEntry.CONTENT_URI,
+                projection,
+                null,
+                null,
+                null );
+    }
 
 
+    @Override
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
+//Update ProductCursorAdapter with this new cursor containing updated book data
+        mCursorAdapter.swapCursor ( data );
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+//Callback called when the data needs to be deleted
+        mCursorAdapter.swapCursor ( null );
     }
 }
 
