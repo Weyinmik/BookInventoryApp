@@ -32,7 +32,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
     int mQuantity = 0;
     //Content URI for the existing book
     private Uri mCurrentBookUri;
-    // EditText fielt to enter the title of the book
+    // EditText field to enter the title of the book
     private EditText mTitleEditText;
     //EditText field to enter the author of the book
     private EditText mAuthorEditText;
@@ -42,7 +42,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
     private EditText mQuantityEditText;
     //EditText field to enter the name of the supplier of the book
     private EditText mSupplierNameEditText;
-    //EditText field to enter the phonenumber of the supplier of the book
+    //EditText field to enter the phone number of the supplier of the book
     private EditText mSupplierPhonenumberEditText;
     //Boolean that keeps track of whether the book has been edited (true) or not (false)
     private boolean mBookHasChanged = false;
@@ -65,7 +65,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
         Intent intent = getIntent ();
         mCurrentBookUri = intent.getData ();
 
-        //If the intent does not containt a book content URI, then a new one should be created
+        //If the intent does not contain a book content URI, then a new one should be created
         if (mCurrentBookUri == null) {
             setTitle ( getString ( R.string.editor_activity_title_new_book ) );
             invalidateOptionsMenu ();

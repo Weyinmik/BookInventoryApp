@@ -32,13 +32,13 @@ public class ProductCursorAdapter extends CursorAdapter {
     //This method binds the book data to the given list item layout
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
-        //Find the individual views that we want to modify in the list item layout
+        //Find the individual views that we want to modify in the product_list_item layout
         TextView titleTextView = (TextView) view.findViewById ( R.id.title );
         TextView priceTextView = (TextView) view.findViewById ( R.id.price );
         TextView quantityTextView = (TextView) view.findViewById ( R.id.quantity );
         Button saleButton = (Button) view.findViewById ( R.id.sale_button );
 
-        //Find the colums of book attributes we want to display
+        //Find the columns of book attributes we want to display
         int titleColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_TITLE );
         int priceColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_PRICE );
         int quantityColumnIndex = cursor.getColumnIndex ( ProductContract.BookEntry.COLUMN_BOOK_QUANTITY );

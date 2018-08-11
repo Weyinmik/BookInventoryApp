@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
-        //Set up Floating Action Button to open the EditorActivity
+        //Set up Floating Action Button to open the ProductEditorActivity
         FloatingActionButton fab = (FloatingActionButton) findViewById ( R.id.fab );
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         bookListView.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                //Create new intent to go to EditorActivity
+                //Create new intent to go to ProductEditorActivity
                 Intent intent = new Intent ( MainActivity.this, ProductEditorActivity.class );
                 //Form the content URI that represents the specific book that was clicked on
                 Uri currentBookUri = ContentUris.withAppendedId ( ProductContract.BookEntry.CONTENT_URI, id );
                 //Set the URI of the data field of the intent
                 intent.setData ( currentBookUri );
-                //Launch the EditorActivity
+                //Launch the ProductEditorActivity
                 startActivity ( intent );
             }
         } );
