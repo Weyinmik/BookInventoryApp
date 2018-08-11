@@ -37,7 +37,7 @@
             <EditText
                 android:id="@+id/edit_book_price"
                 style="@style/EditorFieldStyle"
-                android:ems="10"
+                android:ems="2"
                 android:hint="@string/hint_book_price"
                 android:inputType="numberDecimal|numberSigned" />
 
