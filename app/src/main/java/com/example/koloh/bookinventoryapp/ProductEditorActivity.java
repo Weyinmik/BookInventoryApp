@@ -135,9 +135,17 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
         callButton.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-                String phoneNumber = mSupplierPhonenumberEditText.getText ().toString ();
-                Intent intent = new Intent ( Intent.ACTION_DIAL, Uri.fromParts ( "tel", phoneNumber, null ) );
-                startActivity ( intent );
+                String phoneNumber = mSupplierPhonenumberEditText.getText ().toString ().trim ();
+                if (phoneNumber == null || TextUtils.isEmpty ( phoneNumber )) {
+                    Toast.makeText ( getApplicationContext (), R.string.invalid_or_empty_phone_number, Toast.LENGTH_SHORT ).show ();
+                } else {
+                    Intent intent = new Intent ( Intent.ACTION_DIAL );
+                    String uri = "tel:" + phoneNumber;
+                    intent.setData ( Uri.parse ( uri ) );
+                    if (intent.resolveActivity ( getPackageManager () ) != null) {
+                        startActivity ( intent );
+                    }
+                }
             }
         } );
     }
@@ -151,6 +159,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
         String quantityString = mQuantityEditText.getText ().toString ().trim ();
         String supplierNameString = mSupplierNameEditText.getText ().toString ().trim ();
         String supplierPhoneNumberString = mSupplierPhonenumberEditText.getText ().toString ().trim ();
+
 
         //Check if this is supposed to be a new book and check if all fields are blank
         if (mCurrentBookUri == null && TextUtils.isEmpty ( titleString ) || TextUtils.isEmpty ( authorString ) ||
@@ -167,6 +176,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
         values.put ( ProductContract.BookEntry.COLUMN_BOOK_PRICE, priceString );
         values.put ( ProductContract.BookEntry.COLUMN_BOOK_SUPPLIER_NAME, supplierNameString );
         values.put ( ProductContract.BookEntry.COLUMN_BOOK_SUPPLIER_PHONENUMBER, supplierPhoneNumberString );
+
 
         int quantity = 0;
         if (!TextUtils.isEmpty ( quantityString )) {
@@ -188,6 +198,7 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
                 // Otherwise, the insertion was successful and we can display a toast.
                 Toast.makeText ( this, getString ( R.string.editor_insert_book_successful ),
                         Toast.LENGTH_SHORT ).show ();
+                finish ();
             }
         } else {
             //Otherwise the book already exists and should be updated with the content URI and values
@@ -202,9 +213,11 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
                 // Otherwise, the update was successful and we can display a toast.
                 Toast.makeText ( this, getString ( R.string.editor_update_book_successful ),
                         Toast.LENGTH_SHORT ).show ();
+                finish ();
             }
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -233,7 +246,6 @@ public class ProductEditorActivity extends AppCompatActivity implements LoaderMa
             case R.id.action_save:
                 //save book to database
                 saveBook ();
-                finish ();
                 return true;
             case R.id.action_delete:
                 //delete book from the database

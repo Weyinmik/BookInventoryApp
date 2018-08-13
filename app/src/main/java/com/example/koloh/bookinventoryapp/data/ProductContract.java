@@ -40,10 +40,6 @@ public final class ProductContract {
         //Name of the database table for books
         public final static String TABLE_NAME = "books";
 
-        //Unique ID number for the book (only for use in the database table
-        //Type: INTEGER
-        public final static String _ID = BaseColumns._ID;
-
         /*Title of the book (Product Name)
         Type: TEXT*/
         public final static String COLUMN_BOOK_TITLE = "title";
@@ -53,7 +49,7 @@ public final class ProductContract {
         public final static String COLUMN_BOOK_AUTHOR = "author";
 
         /*Price of the book
-        Type: REAL*/
+        Type: R*/
         public final static String COLUMN_BOOK_PRICE = "price";
 
         /*Quantity of books

@@ -1,9 +1,11 @@
 package com.example.koloh.bookinventoryapp;
 
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.koloh.bookinventoryapp.data.ProductContract;
 
@@ -75,9 +78,38 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
+    //Prompt the user to confirm they want to delete this book
+    private void showDeleteConfirmationDialog() {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the postive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder ( this );
+        builder.setMessage ( R.string.delete_all_dialog_msg );
+        builder.setPositiveButton ( R.string.delete, new DialogInterface.OnClickListener () {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Delete" button, so delete the book.
+                deleteAllBooks ();
+            }
+        } );
+        builder.setNegativeButton ( R.string.cancel, new DialogInterface.OnClickListener () {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the book.
+                if (dialog != null) {
+                    dialog.dismiss ();
+                }
+            }
+        } );
+
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create ();
+        alertDialog.show ();
+    }
+
     //Method to delete all books in the database
     private void deleteAllBooks() {
         int rowsDeleted = getContentResolver ().delete ( ProductContract.BookEntry.CONTENT_URI, null, null );
+        Toast.makeText ( this, String.format ( getString ( R.string.all_counted_rows_deleted ), rowsDeleted ), Toast.LENGTH_SHORT ).show ();
+
     }
 
     @Override
@@ -92,9 +124,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //User clicked on a menu option (switch statement used for if any other options get added later)
         switch (item.getItemId ()) {
             case R.id.action_delete_all_books:
-                deleteAllBooks ();
+                showDeleteConfirmationDialog ();
                 return true;
         }
+
         return super.onOptionsItemSelected ( item );
     }
 

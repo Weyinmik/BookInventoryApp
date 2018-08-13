@@ -49,6 +49,6 @@
             android:background="@color/colorPrimary"
             android:text="@string/btn_text"
             android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/colorAccent" />
+            android:textColor="#FFFFFF" />
 
 </LinearLayout>

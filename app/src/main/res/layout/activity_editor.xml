@@ -62,7 +62,7 @@
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/btn_padding"
                 android:background="@color/primary"
-                android:textColor="@color/colorAccent"
+                android:textColor="#FFFFFF"
                 android:text="-" />
 
             <!-- Quantity field -->
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textAlignment="center"
-                android:inputType="textCapWords" />
+                android:inputType="number" />
 
             <!-- Increment Button -->
             <Button
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@color/primary"
-                android:textColor="@color/colorAccent"
+                android:textColor="#FFFFFF"
                 android:padding="@dimen/btn_padding"
                 android:text="+" />
 
@@ -105,7 +105,7 @@
                 android:id="@+id/edit_book_supplier_phonenumber"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_book_supplier_phonenumber"
-                android:inputType="textCapWords" />
+                android:inputType="phone|number" />
 
             <Button
                 android:id="@+id/call_button"

@@ -6,7 +6,7 @@
 
     <color name="primary">#395fcb</color>
     <color name="primary_dark">#223979</color>
-    <color name="accent">#FFFFFF</color>
+    <color name="accent">#ff4081</color>
 
 
     <!-- Primary color for the editor -->

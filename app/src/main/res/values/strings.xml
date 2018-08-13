@@ -4,46 +4,41 @@
     <string name="hint_book_title">Book Title</string>
     <string name="hint_book_author">Book Author</string>
     <string name="hint_book_price">Price</string>
-    <string name="hint_book_quantity">Quantity</string>
+    <string name="hint_book_quantity">0</string>
     <string name="hint_book_supplier_name">Supplier Name</string>
     <string name="hint_book_supplier_phonenumber">Supplier Phone Number</string>
     <string name="save_button">Save</string>
 
     <string name="title_activity_editor">ProductEditorActivity</string>
-
-
+    <string name="all_counted_rows_deleted">All %d Rows Deleted!</string>
+    <string name="invalid_or_empty_phone_number">Cannot call empty or invalid number!</string>
     <string name="editor_activity_title_edit_book">Edit Book</string>
-
-    <string name="error_toast_message">Error with saving product</string>
+    <string name="editor_insert_item_failed">Error With Saving Product!</string>
+    <string name="editor_insert_item_successful">Product Saved!</string>
+    <string name="deletion_failed">Deletion Failed</string>
     <string name="save_toast_message">save product with _id: </string>
-
     <string name="action_delete_all_books">Delete All Books</string>
     <string name="delete_btn">Delete</string>
     <string name="call_btn_text">CALL</string>
-
     <string name="unit_book_price">EUR</string>
     <string name="btn_text">SELL</string>
-
-    <!-- Title text for the empty view -->
+    <string name="action_delete_all_entries">Delete All Books</string>
     <string name="empty_view_title_default_text">Your inventory is currently empty</string>
-
-    <!-- Subtitle text for the empty view that prompts the user to add a book-->
     <string name="empty_view_sub_default_text">Use float button below to add books</string>
-
-    <!-- Insert messages -->
     <string name="editor_insert_book_failed">Insert Book Failed!</string>
     <string name="editor_insert_book_successful">Book Successfully Inserted!</string>
-
-    <!-- Update messages -->
     <string name="editor_update_book_failed">Update Book Failed!</string>
     <string name="editor_update_book_successful">Book Successfully Updated!</string>
-
-    <!-- Delete messages -->
+    <string name="update_failed">Update Product Failed!</string>
+    <string name="update_successful">Update Product Successful!</string>
     <string name="editor_delete_book_failed">Delete Book Failed!</string>
     <string name="editor_delete_book_successful">Book Successfully Deleted!</string>
 
     <!-- Dialog message to ask the user to confirm deleting the current book -->
     <string name="delete_dialog_msg">Do you want to delete this book?</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current book -->
+    <string name="delete_all_dialog_msg">Do you really want to delete all rows of books?</string>
 
     <!-- Dialog button text for the option to cancel deletion of the current book -->
     <string name="cancel">Cancel</string>
@@ -67,6 +62,6 @@
     <string name="out_of_stock_message">This book is out of stock</string>
 
     <!-- Tells the user empty fields are not allowed when inserting the book -->
-    <string name="empty_fields_message">Empty fields are not allowed, enter data in all fields</string>
+    <string name="empty_fields_message">Empty fields are not allowed, please enter data in all fields</string>
 
 </resources>
