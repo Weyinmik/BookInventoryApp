@@ -74,6 +74,7 @@ public class ProductCursorAdapter extends CursorAdapter {
                     ContentValues values = new ContentValues ();
                     values.put ( ProductContract.BookEntry.COLUMN_BOOK_QUANTITY, decrementedQuantity );
                     context.getContentResolver ().update ( quantityUri, values, null, null );
+                    Toast.makeText ( context, R.string.item_sold, Toast.LENGTH_SHORT ).show ();
                 } else {
                     //Show an error when the quantity reaches 0
                     Toast.makeText ( context, R.string.out_of_stock_message, Toast.LENGTH_SHORT ).show ();

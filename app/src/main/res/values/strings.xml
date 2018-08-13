@@ -11,6 +11,7 @@
 
     <string name="title_activity_editor">ProductEditorActivity</string>
     <string name="all_counted_rows_deleted">All %d Rows Deleted!</string>
+    <string name="item_sold">Item Sold!</string>
     <string name="invalid_or_empty_phone_number">Cannot call empty or invalid number!</string>
     <string name="editor_activity_title_edit_book">Edit Book</string>
     <string name="editor_insert_item_failed">Error With Saving Product!</string>
