@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     //Prompt the user to confirm they want to delete this book
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
-        // for the postive and negative buttons on the dialog.
+        // for the positive and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder ( this );
         builder.setMessage ( R.string.delete_all_dialog_msg );
         builder.setPositiveButton ( R.string.delete, new DialogInterface.OnClickListener () {
