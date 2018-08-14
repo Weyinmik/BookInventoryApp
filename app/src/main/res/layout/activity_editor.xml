@@ -70,6 +70,7 @@
                 android:id="@+id/edit_book_quantity"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_book_quantity"
+                android:maxLength="3"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textAlignment="center"
